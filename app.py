@@ -12,7 +12,7 @@ UPLOAD_DIR = (SITE_ROOT / "assets" / "uploads").resolve()
 HISTORY_DIR = (CONTENT_DIR / ".history").resolve()
 
 ADMIN_USER = os.getenv("CMS_USER", "editor")
-ADMIN_PASS = os.getenv("CMS_PASS", "change-me-please")
+ADMIN_PASS = os.getenv("CMS_PASS", "123456")
 
 app = FastAPI()
 security = HTTPBasic()
