@@ -16,8 +16,9 @@ HISTORY_DIR = (CONTENT_DIR / ".history").resolve()
 
 BASE_DIR   = Path(__file__).resolve().parent          # main.py 所在目录
 CMS_DIR    = (BASE_DIR / "cms_admin").resolve()       # …/cms_admin
+print("CMS_DIR: ", CMS_DIR)
 CMS_INDEX  = (CMS_DIR / "index.html").resolve()       # …/cms_admin/index.html
-
+print("CMS_INDEX: ", CMS_INDEX)
 ADMIN_USER  = os.getenv("CMS_USER", "editor")
 ADMIN_PASS  = os.getenv("CMS_PASS", "123456")
 
