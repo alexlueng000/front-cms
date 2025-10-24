@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>CMS Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/cms_admin/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="brand">
+        <div class="logo"></div>
+        <h3>内容管理</h3>
+      </div>
+      <div class="hint">目录：<code>/content</code>（仅 <b>.json</b>）</div>
+
+      <div class="section box">
+        <div class="files-head">
+          <div class="input">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+                    stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input id="filter" placeholder="搜索文件…（输入关键字）" />
+          </div>
+          <button class="btn" id="btnRefresh">刷新</button>
+        </div>
+        <div id="files" class="files" role="listbox" aria-label="文件列表"></div>
+        <div class="row">
+          <input id="newName" type="text" placeholder="新文件名 如 about.zh.json" />
+          <button class="btn primary" id="btnCreate">新建</button>
+        </div>
+      </div>
+
+      <div class="section box upload-wrap">
+        <div class="uploader">
+          <span class="badge">上传图片</span>
+          <input id="uploader" type="file" accept="image/*" />
+          <label for="uploader" class="btn">选择图片</label>
+          <button class="btn" id="btnUpload">上传</button>
+          <div id="uploadResult" class="hint">上传后会返回可粘贴的 URL</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- DRAG -->
+    <div class="dragbar" id="dragbar" title="拖拽调整侧栏宽度"></div>
+
+    <!-- MAIN -->
+    <main>
+      <header>
+        <div class="title">
+          <div id="statusDot" class="status-dot status-ok" aria-label="状态指示"></div>
+          <div class="name" id="curName">（未选择文件）</div>
+          <span class="muted small" id="saveState">已保存</span>
+        </div>
+        <div class="toolbar">
+          <button class="btn" id="btnFormat" title="Ctrl/Cmd + B">格式化 JSON <span class="kbd">⌘/Ctrl+B</span></button>
+          <button class="btn" id="btnReload" title="Ctrl/Cmd + R">重载 <span class="kbd">⌘/Ctrl+R</span></button>
+          <button class="btn primary" id="btnSave" title="Ctrl/Cmd + S">保存 <span class="kbd">⌘/Ctrl+S</span></button>
+        </div>
+      </header>
+
+      <div class="editor-wrap">
+        <div class="editor">
+          <textarea id="editor" placeholder="在左侧选择或新建文件后进行编辑…" spellcheck="false" aria-label="编辑器"></textarea>
+          <div class="bottombar">
+            <div class="small muted">小贴士：支持快捷键保存、格式化与重载；未保存更改时切换文件将提示确认。</div>
+            <div class="right-actions">
+              <span class="badge" id="byteInfo">0 字节</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  
+  <script src="/cms_admin/app.js"></script>
+</body>
+</html>
